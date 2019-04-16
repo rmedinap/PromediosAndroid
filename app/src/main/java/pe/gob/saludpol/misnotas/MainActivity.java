@@ -1,0 +1,39 @@
+package pe.gob.saludpol.misnotas;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    private EditText txtNota1, txtNota2, txtNota3;
+    private Button btnCalcular;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+        txtNota1 = (EditText) findViewById(R.id.txtNota1);
+        txtNota2 = (EditText) findViewById(R.id.txtNota2);
+        txtNota3 = (EditText) findViewById(R.id.txtNota3);
+        btnCalcular = (Button) findViewById(R.id.btnCalcular);
+
+        btnCalcular.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Mostrar_Resultado();
+            }
+        });
+    }
+
+    private void Mostrar_Resultado() {
+        String vResultado = (txtNota1.getText() + txtNota2.getText() + txtNota3.getText())/3;
+        String vMostrarResultado = "Resultaso: " + vResultado;
+        Toast.makeText(this, vMostrarResultado, Toast.LENGTH_LONG).show();
+    }
+}
