@@ -32,8 +32,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void Mostrar_Resultado() {
-        String vResultado = (txtNota1.getText() + txtNota2.getText() + txtNota3.getText())/3;
-        String vMostrarResultado = "Resultaso: " + vResultado;
+
+        String pNota1 = txtNota1.getText().toString();
+
+        String pNota2 = txtNota2.getText().toString();
+
+        String pNota3 = txtNota3.getText().toString();
+
+        if (pNota1.isEmpty()) {
+            Toast.makeText(this, "Ingrese nota 1", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (pNota2.isEmpty()) {
+            Toast.makeText(this, "Ingrese nota 2", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (pNota3.isEmpty()) {
+            Toast.makeText(this, "Ingrese nota 3", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        double nResultado = (Double.parseDouble(pNota1) + Double.parseDouble(pNota2) + Double.parseDouble(pNota3))/3;
+
+        String estado = ( nResultado >= 13 ) ? "aprobado":"desaprobado";
+
+        String vMostrarResultado = "Resultado: " + nResultado + " Ud. está " + estado;
+
         Toast.makeText(this, vMostrarResultado, Toast.LENGTH_LONG).show();
     }
 }
